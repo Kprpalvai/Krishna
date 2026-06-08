@@ -148,6 +148,26 @@ section{padding:6rem 2rem;max-width:1100px;margin:0 auto;}
   section{padding:4.5rem 1.5rem;}
   .data-overlay{display:none;}
 }
+  /* Copilot floating chat widget styles */
+  .copilot-floating{position:fixed;right:22px;bottom:22px;width:56px;height:56px;border-radius:999px;background:linear-gradient(180deg,#0f2b3f,#07202b);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(2,6,23,.6);cursor:pointer;z-index:900;color:var(--gold);border:1px solid rgba(201,168,76,.14);}
+  .copilot-panel{position:fixed;right:22px;bottom:96px;width:360px;max-height:68vh;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,rgba(7,17,31,.98),rgba(7,17,31,.92));box-shadow:0 30px 60px rgba(2,6,23,.7);z-index:901;border:1px solid rgba(255,255,255,.04);display:flex;flex-direction:column;transform:translateY(8px);transition:all .22s ease;}
+  .copilot-panel[aria-hidden="true"]{opacity:0;visibility:hidden;transform:translateY(12px) scale(.98);}
+  .copilot-panel[aria-hidden="false"]{opacity:1;visibility:visible;transform:translateY(0) scale(1);} 
+  .copilot-header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;border-bottom:1px solid rgba(255,255,255,.03);} 
+  .copilot-header .title{font-weight:700;color:var(--text);font-size:.95rem;display:flex;align-items:center;gap:.6rem}
+  .copilot-header button{background:transparent;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer}
+  .copilot-body{display:flex;flex-direction:column;flex:1;padding:.6rem;gap:.6rem}
+  .copilot-messages{overflow:auto;flex:1;padding:.4rem;border-radius:6px;background:linear-gradient(180deg,rgba(255,255,255,.01),rgba(255,255,255,.005));display:flex;flex-direction:column;gap:.5rem}
+  .copilot-msg{max-width:86%;padding:.55rem .7rem;border-radius:6px;font-size:.86rem;line-height:1.35}
+  .copilot-msg.user{align-self:flex-end;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.14);color:var(--text)}
+  .copilot-msg.assistant{align-self:flex-start;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04);color:var(--muted)}
+  .copilot-typing{display:flex;gap:.28rem;align-items:center}
+  .copilot-input-row{display:flex;gap:.5rem;padding-top:.3rem}
+  .copilot-input{flex:1;padding:.6rem .8rem;border-radius:6px;border:1px solid rgba(255,255,255,.04);background:transparent;color:var(--text);outline:none}
+  .copilot-send{background:var(--gold);border:none;color:var(--navy);padding:.56rem .8rem;border-radius:6px;cursor:pointer;font-weight:600}
+  @media(max-width:520px){.copilot-panel{right:12px;left:12px;width:auto;bottom:84px}}
+  .copilot-sources{font-size:.78rem;color:var(--muted);padding:.45rem .6rem;border-top:1px dashed rgba(255,255,255,.03);margin-top:.35rem}
+  .copilot-source{display:block;color:var(--gold);text-decoration:underline;cursor:pointer;margin-top:.25rem}
 </style>
 </head>
 <body>
@@ -385,7 +405,6 @@ section{padding:6rem 2rem;max-width:1100px;margin:0 auto;}
 <footer><p>Portfolio of <span>Krishna Prasad</span> &middot; Data Engineer &middot; AWS Certified &middot; Powered by Claude AI &middot; 2025</p></footer>
 
 <script>
-// HERO CANVAS
 const hC=document.getElementById('bg-canvas'),hX=hC.getContext('2d');
 let hW,hH,hP=[];
 function hR(){hW=hC.width=window.innerWidth;hH=hC.height=window.innerHeight;}
@@ -400,11 +419,9 @@ function hD(){
   requestAnimationFrame(hD);}
 hD();
 
-// NAV
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
 
-// VIDEO CANVAS
 const vC=document.getElementById('vcanvas'),vX=vC.getContext('2d');
 let vW,vH,vP=[];
 function vR(){const s=document.getElementById('vscreen');vW=vC.width=s.offsetWidth;vH=vC.height=s.offsetHeight;}
@@ -419,7 +436,6 @@ function vD(){
   requestAnimationFrame(vD);}
 vD();
 
-// VIDEO SCRIPT
 const SCRIPT=[
   {t:0,ch:0,text:"Hi, I'm Krishna Prasad — an AWS Certified Data Engineer based in California, USA."},
   {t:4,ch:1,text:"I have 4+ years of experience building large-scale data pipelines on Snowflake, EMR, Redshift, Kafka, and Airflow."},
@@ -474,7 +490,6 @@ function jumpTo(ch){elapsed=CHTIMES[ch];sIdx=-1;playing=true;document.getElement
 function seekBar(e){const b=e.currentTarget;elapsed=(e.offsetX/b.offsetWidth)*TOTAL;sIdx=-1;}
 setTimeout(()=>{playing=true;document.getElementById('play-icon').innerHTML='<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';sIdx=0;typeTo(SCRIPT[0].text);},1400);
 
-// OBSERVER
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -492,7 +507,6 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.15});
 document.querySelectorAll('.tl-item,.skill-card,.stat-card').forEach(el=>obs.observe(el));
 
-// AI CHAT
 const SYS=`You are the AI assistant for Krishna Prasad's professional portfolio. Krishna is an AWS-certified Data Engineer with 4+ years of experience.
 
 PERSONAL:
@@ -559,6 +573,141 @@ function appendTyping(){
 }
 function askQ(btn){document.getElementById('ai-input').value=btn.textContent;sendMsg();}
 document.getElementById('ai-input').addEventListener('keydown',e=>{if(e.key==='Enter')sendMsg();});
+</script>
+
+<!-- Copilot chat widget markup -->
+<div id="copilot-toggle" class="copilot-floating" aria-label="Open chat" title="Chat">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div id="copilot-panel" class="copilot-panel" aria-hidden="true">
+  <div class="copilot-header">
+    <div class="title">Copilot — Research Assistant</div>
+    <div><button id="copilot-close" aria-label="Close">✕</button></div>
+  </div>
+  <div class="copilot-body">
+    <div id="copilot-messages" class="copilot-messages" role="log" aria-live="polite">
+      <div class="copilot-msg assistant">Hi — ask me questions about our research. I answer using the project's knowledge base.</div>
+    </div>
+    <div class="copilot-input-row">
+      <input id="copilot-input" class="copilot-input" placeholder="Ask about the research..." aria-label="Ask a question" />
+      <button id="copilot-send" class="copilot-send">Send</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const toggle = document.getElementById('copilot-toggle');
+  const panel = document.getElementById('copilot-panel');
+  const closeBtn = document.getElementById('copilot-close');
+  const sendBtn = document.getElementById('copilot-send');
+  const input = document.getElementById('copilot-input');
+  const msgs = document.getElementById('copilot-messages');
+
+  let history = JSON.parse(localStorage.getItem('copilot_history')||'[]');
+
+  function setPanel(open){panel.setAttribute('aria-hidden', !open); if(open) input.focus();}
+  function appendMsg(text, role){const d=document.createElement('div');d.className='copilot-msg '+role;d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
+  function showTyping(){const t=document.createElement('div');t.className='copilot-msg assistant copilot-typing';t.id='_copilot_typing';t.innerHTML='<span style="opacity:.8">Thinking</span><span style="opacity:.6;margin-left:.45rem">• • •</span>';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;}
+  function hideTyping(){const t=document.getElementById('_copilot_typing');if(t) t.remove();}
+
+  function localSearch(query, kb, topK=3){
+    if(!kb || !Array.isArray(kb)) return [];
+    const q=query.toLowerCase().split(/\s+/).filter(Boolean);
+    return kb.map(d=>{const txt=(d.title+' '+d.content).toLowerCase();let score=0;for(const w of q) if(txt.includes(w)) score++; return {...d,score}}).filter(d=>d.score>0).sort((a,b)=>b.score-a.score).slice(0,topK);
+  }
+
+  async function sendQuery(q){
+    const trimmed=q.trim(); if(!trimmed) return;
+    appendMsg(trimmed,'user'); history.push({role:'user',text:trimmed}); localStorage.setItem('copilot_history',JSON.stringify(history));
+    showTyping();
+
+    // Build context from client KB (if present)
+    let contextText='';
+    try{
+      const kb = window.COPILOT_KB || null;
+      const hits = localSearch(trimmed,kb,3);
+      if(hits.length) contextText='Relevant excerpts:\n'+hits.map(h=>'• '+(h.title||'')+' — '+(h.content||'')).join('\n---\n');
+    }catch(e){/* ignore */}
+
+    // Use streaming endpoint if available
+    try{
+      const streamRes = await fetch('/api/copilot/stream', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({query: trimmed, context: contextText, history: history.slice(-10)}), credentials:'same-origin'});
+      if(!streamRes.ok) throw new Error('stream failed');
+      hideTyping();
+      // create assistant message container and stream into it
+      const assistantEl = document.createElement('div'); assistantEl.className='copilot-msg assistant'; assistantEl.textContent=''; msgs.appendChild(assistantEl); msgs.scrollTop=msgs.scrollHeight;
+
+      const reader = streamRes.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      while(true){
+        const { value, done } = await reader.read();
+        if(done) break;
+        buffer += decoder.decode(value, {stream:true});
+        // Handle SSE-like frames separated by double newline
+        const parts = buffer.split('\n\n');
+        buffer = parts.pop();
+        for(const part of parts){
+          const p = part.trim();
+          if(!p) continue;
+          if(p.startsWith('event:')){
+            const evt = p.split('\n')[0].replace('event:','').trim();
+            const dataLine = p.split('\n').slice(1).join('\n').replace(/^data:\s*/,'');
+            try{ const payload = JSON.parse(dataLine); if(evt==='sources'){ /* render sources */
+                const sWrap = document.createElement('div'); sWrap.className='copilot-sources'; const title = document.createElement('div'); title.style.fontWeight='600'; title.textContent='Sources:'; sWrap.appendChild(title);
+                payload.forEach(src=>{ const s = document.createElement('div'); s.className='copilot-source'; s.textContent = src.title||src.id||'source'; s.addEventListener('click', ()=>{ if(src.url) window.open(src.url,'_blank'); else alert(`Source: ${src.id || src.title}`); }); sWrap.appendChild(s); }); msgs.appendChild(sWrap); msgs.scrollTop=msgs.scrollHeight; }
+            }catch(e){/* ignore */}
+          } else if(p.startsWith('data:')){
+            const data = p.replace(/^data:\s*/,'').trim();
+            if(data === '[DONE]'){
+              // done
+            }else{
+              try{
+                const jd = JSON.parse(data);
+                if(jd.text){ assistantEl.textContent += jd.text; msgs.scrollTop = msgs.scrollHeight; }
+                else if(jd.chunk){ assistantEl.textContent += jd.chunk; msgs.scrollTop = msgs.scrollHeight; }
+              }catch(e){ /* if not json, append raw */ assistantEl.textContent += data; msgs.scrollTop = msgs.scrollHeight; }
+            }
+          }
+        }
+      }
+      // finalize
+      history.push({role:'assistant',text:assistantEl.textContent}); localStorage.setItem('copilot_history',JSON.stringify(history));
+      return;
+    }catch(err){
+      // fallback to non-streaming behavior
+      hideTyping();
+      try{
+        const res2 = await fetch('/api/copilot',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:trimmed,context:contextText,history:history.slice(-10)}) ,credentials:'same-origin'});
+        if(res2.ok){
+          const d = await res2.json(); const reply = d.reply || ''; appendMsg(reply,'assistant'); if(d.sources){ const sWrap = document.createElement('div'); sWrap.className='copilot-sources'; const title = document.createElement('div'); title.style.fontWeight='600'; title.textContent='Sources:'; sWrap.appendChild(title); d.sources.forEach(src=>{ const s = document.createElement('div'); s.className='copilot-source'; s.textContent = src.title||src.id||'source'; s.addEventListener('click', ()=>{ if(src.url) window.open(src.url,'_blank'); else alert(`Source: ${src.id || src.title}`); }); sWrap.appendChild(s); }); msgs.appendChild(sWrap); msgs.scrollTop=msgs.scrollHeight; history.push({role:'assistant',text:reply}); localStorage.setItem('copilot_history',JSON.stringify(history)); return; }
+      }catch(e){/* fall through */}
+      // final fallback: local KB
+      const kb = window.COPILOT_KB || null;
+      if(kb){
+        const hits = localSearch(trimmed,kb,3);
+        if(hits.length){
+          const reply = 'I could not reach the server — showing top local matches:\n\n'+hits.map(h=>h.content.slice(0,600)).join('\n\n---\n\n');
+          appendMsg(reply,'assistant'); history.push({role:'assistant',text:reply}); localStorage.setItem('copilot_history',JSON.stringify(history)); return;
+        }
+      }
+      appendMsg('Connection error — server unavailable.','assistant'); history.push({role:'assistant',text:'Connection error — server unavailable.'}); localStorage.setItem('copilot_history',JSON.stringify(history));
+    }
+  }
+
+  // Wire UI
+  toggle.addEventListener('click',()=>setPanel(panel.getAttribute('aria-hidden')==='true'));
+  closeBtn.addEventListener('click',()=>setPanel(false));
+  sendBtn.addEventListener('click',()=>{sendQuery(input.value); input.value='';});
+  input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault(); sendQuery(input.value); input.value='';}});
+
+  // load short history if present
+  (function loadHistory(){if(history.length){for(const m of history.slice(-12)){appendMsg(m.text, m.role==='user'?'user':'assistant');}}})();
+
+  // Expose a simple API: window.Copilot.send(query)
+  window.Copilot = { send: sendQuery, open: ()=>setPanel(true), close: ()=>setPanel(false) };
+})();
 </script>
 </body>
 </html>

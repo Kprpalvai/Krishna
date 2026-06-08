@@ -1,0 +1,17 @@
+[
+  {
+    "id": "r001",
+    "title": "Data Lake Publisher (Hexagon AP)",
+    "content": "Built a Data Lake Publisher on PySpark and Spark Streaming ingesting CDC events from 300+ source tables with end-to-end latency under 1 minute. Included schema evolution handling, compacted micro-batches, and metadata-driven orchestration."
+  },
+  {
+    "id": "r002",
+    "title": "Snowflake Tuning Case Study",
+    "content": "Rewrote heavy analytic queries and clustered key usage, dropping runtime from 14 minutes to under 4 minutes and saving approximately $18,000 per month in compute. Strategies included query profiling, materialized views, and warehouse right-sizing."
+  },
+  {
+    "id": "r003",
+    "title": "Real-time Financial Model",
+    "content": "Designed a real-time financial data model using Kinesis and Spark Streaming to sustain over 10,000 events per second with no data loss, applying partitioning strategies and idempotent consumers."
+  }
+]

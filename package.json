@@ -1,0 +1,14 @@
+{
+  "name": "krishna-portfolio-copilot",
+  "version": "1.0.0",
+  "description": "Local backend stub for Copilot chat widget",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "openai": "^4.5.0"
+  }
+}
