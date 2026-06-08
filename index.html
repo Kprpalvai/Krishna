@@ -558,7 +558,7 @@ async function sendMsg(){
     const d=await r.json();typing.remove();
     const reply=d.content?.[0]?.text||'Sorry, I had trouble with that.';
     appendMsg(reply,'assistant');msgs.push({role:'assistant',content:reply});
-  }catch{typing.remove();appendMsg('Connection error — please try again.','assistant');}
+  }catch(e){typing.remove();appendMsg('Connection error — please try again.','assistant');}
 }
 function appendMsg(text,role){
   const box=document.getElementById('ai-messages');
@@ -682,6 +682,7 @@ document.getElementById('ai-input').addEventListener('keydown',e=>{if(e.key==='E
         const res2 = await fetch('/api/copilot',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:trimmed,context:contextText,history:history.slice(-10)}) ,credentials:'same-origin'});
         if(res2.ok){
           const d = await res2.json(); const reply = d.reply || ''; appendMsg(reply,'assistant'); if(d.sources){ const sWrap = document.createElement('div'); sWrap.className='copilot-sources'; const title = document.createElement('div'); title.style.fontWeight='600'; title.textContent='Sources:'; sWrap.appendChild(title); d.sources.forEach(src=>{ const s = document.createElement('div'); s.className='copilot-source'; s.textContent = src.title||src.id||'source'; s.addEventListener('click', ()=>{ if(src.url) window.open(src.url,'_blank'); else alert(`Source: ${src.id || src.title}`); }); sWrap.appendChild(s); }); msgs.appendChild(sWrap); msgs.scrollTop=msgs.scrollHeight; history.push({role:'assistant',text:reply}); localStorage.setItem('copilot_history',JSON.stringify(history)); return; }
+        }
       }catch(e){/* fall through */}
       // final fallback: local KB
       const kb = window.COPILOT_KB || null;
