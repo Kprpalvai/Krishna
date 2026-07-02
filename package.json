@@ -2,27 +2,39 @@
   "name": "krishna-portfolio-copilot",
   "version": "1.0.1",
   "description": "Krishna Prasad Portfolio - Data Engineer & Cloud Architect",
+  "homepage": "https://github.com/Kprpalvai/Krishna",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kprpalvai/Krishna.git"
+  },
   "main": "server.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "openai": "^4.24.0"
+    "express": "4.18.2",
+    "cors": "2.8.5",
+    "openai": "4.24.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
   },
   "keywords": [
     "portfolio",
     "data-engineer",
+    "cloud-architect",
     "aws",
     "snowflake",
     "spark",
-    "airflow"
+    "airflow",
+    "copilot"
   ],
   "author": "Krishna Prasad",
   "license": "MIT"
