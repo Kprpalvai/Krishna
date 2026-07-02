@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta name="description" content="Krishna Prasad - AWS Certified Data Engineer & Cloud Architect with expertise in Snowflake, Spark, and Airflow"/>
+  <meta name="keywords" content="data engineer, aws, snowflake, spark, airflow, cloud architecture"/>
   <title>Krishna Prasad — Data Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
@@ -22,7 +24,8 @@
     html{scroll-behavior:smooth;}
     body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
 
-    nav{position:fixed;top:0;width:100%;z-index:200;padding:1.4rem 4rem;display:flex;justify-content:space-between;align-items:center;transition:all .35s;background:rgba(7,17,31,0.95);backdrop-filter:blur(10px);}
+    nav{position:fixed;top:0;width:100%;z-index:200;padding:1.4rem 4rem;display:flex;justify-content:space-between;align-items:center;transition:all 0.35s ease;background:rgba(7,17,31,0.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.05);}
+    nav.scrolled{padding:0.8rem 4rem;background:rgba(7,17,31,0.98);box-shadow:0 4px 16px rgba(0,0,0,0.3);}
 
     #hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
     #bg-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
@@ -31,51 +34,55 @@
     .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.2rem);font-weight:700;color:#fff;margin-bottom:1.5rem;line-height:1.1;}
     .hero-subtitle{font-size:clamp(1rem,2vw,1.3rem);color:var(--muted);margin-bottom:2rem;font-weight:300;}
 
-    .btn{padding:.82rem 2.1rem;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .25s;border:1.5px solid;text-decoration:none;display:inline-block;}
+    .btn{padding:0.82rem 2.1rem;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.25s ease;border:1px solid transparent;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;}
     .btn-primary{background:var(--gold);color:var(--navy);border-color:var(--gold);}
     .btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-2px);}
-    .btn-outline{background:transparent;color:var(--text);border-color:rgba(255,255,255,.22);}
+    .btn-outline{background:transparent;color:var(--text);border-color:rgba(255,255,255,0.22);}
     .btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
 
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
     @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 
     #video-section{padding:5rem 2rem;max-width:1100px;margin:0 auto;}
-    .section-label{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;}
+    .section-label{font-size:0.7rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem;}
     .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;color:#fff;margin-bottom:1rem;line-height:1.15;}
     .section-divider{width:55px;height:2px;background:var(--gold);margin-bottom:3rem;}
 
-    #experience{background:rgba(14,31,53,.4);max-width:100%;padding:6rem 2rem;}
+    #experience{background:rgba(14,31,53,0.4);max-width:100%;padding:6rem 2rem;}
     #experience>.inner{max-width:1100px;margin:0 auto;}
 
     .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem;}
-    .skill-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:1.65rem;transition:all .3s;opacity:0;transform:translateY(16px);}
+    .skill-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,0.06);border-radius:2px;padding:1.65rem;transition:all 0.3s ease;opacity:0;transform:translateY(16px);}
     .skill-card.visible{opacity:1;transform:translateY(0);}
-    .skill-card:hover{border-color:rgba(201,168,76,.28);transform:translateY(-3px);}
+    .skill-card:hover{border-color:rgba(201,168,76,0.28);transform:translateY(-3px);}
 
-    .skill-card-title{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:1rem;}
-    .skill-bar-wrap{margin-bottom:.65rem;}
-    .skill-bar-label{display:flex;justify-content:space-between;font-size:.74rem;color:var(--muted);margin-bottom:.3rem;}
-    .skill-bar{height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
+    .skill-card-title{font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:1rem;}
+    .skill-bar-wrap{margin-bottom:0.65rem;}
+    .skill-bar-label{display:flex;justify-content:space-between;font-size:0.74rem;color:var(--muted);margin-bottom:0.3rem;}
+    .skill-bar{height:3px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden;}
     .skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:2px;width:0;transition:width 1.1s ease;}
 
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
     .contact-item{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1.8rem;}
-    .contact-icon{width:42px;height:42px;border:1px solid rgba(201,168,76,.28);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;background:rgba(201,168,76,.05);}
-    .contact-label{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.18rem;}
-    .contact-value{font-size:.92rem;color:var(--text);}
+    .contact-icon{width:42px;height:42px;border:1px solid rgba(201,168,76,0.28);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;background:rgba(22,45,74,0.5);color:var(--gold);}
+    .contact-label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.18rem;}
+    .contact-value{font-size:0.92rem;color:var(--text);}
 
-    .resume-box{background:var(--navy-mid);border:1px solid rgba(201,168,76,.2);border-radius:2px;padding:2rem;text-align:center;}
-    .resume-box h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:#fff;margin-bottom:.45rem;}
-    .resume-box p{font-size:.85rem;color:var(--muted);margin-bottom:1.6rem;}
+    .contact-value a{color:var(--text);text-decoration:none;transition:color 0.3s ease;}
+    .contact-value a:hover{color:var(--gold);}
 
-    footer{border-top:1px solid rgba(255,255,255,.05);padding:2.2rem;text-align:center;font-size:.75rem;color:var(--muted);}
+    .resume-box{background:var(--navy-mid);border:1px solid rgba(201,168,76,0.2);border-radius:2px;padding:2rem;text-align:center;}
+    .resume-box h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:#fff;margin-bottom:0.45rem;}
+    .resume-box p{font-size:0.85rem;color:var(--muted);margin-bottom:1.6rem;line-height:1.6;}
+
+    footer{border-top:1px solid rgba(255,255,255,0.05);padding:2.2rem;text-align:center;font-size:0.75rem;color:var(--muted);}
     footer span{color:var(--gold);}
 
     section{padding:6rem 2rem;max-width:1100px;margin:0 auto;}
 
     @media(max-width:768px){
       nav{padding:1.2rem 1.5rem;}
+      nav.scrolled{padding:0.8rem 1.5rem;}
       .contact-grid{grid-template-columns:1fr;gap:2.2rem;}
       section{padding:4.5rem 1.5rem;}
       .hero-content{padding:1.5rem;}
@@ -88,7 +95,7 @@
       <h1 style="font-size:1.2rem;color:var(--gold);">Krishna Prasad</h1>
     </div>
     <div style="display:flex;gap:1.5rem;align-items:center;">
-      <a href="#contact" class="btn btn-outline" style="padding:.6rem 1.5rem;font-size:.75rem;">Contact</a>
+      <a href="#contact" class="btn btn-outline" style="padding:0.6rem 1.5rem;font-size:0.75rem;">Contact</a>
     </div>
   </nav>
 
@@ -201,14 +208,14 @@
           <div class="contact-icon">✉</div>
           <div>
             <p class="contact-label">Email</p>
-            <p class="contact-value"><a href="mailto:krishna.palvai34@gmail.com" style="color:var(--text);text-decoration:none;">krishna.palvai34@gmail.com</a></p>
+            <p class="contact-value"><a href="mailto:krishna.palvai34@gmail.com">krishna.palvai34@gmail.com</a></p>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">💼</div>
           <div>
             <p class="contact-label">LinkedIn</p>
-            <p class="contact-value"><a href="https://www.linkedin.com/in/krishnaprasad34" target="_blank" style="color:var(--text);text-decoration:none;">linkedin.com/in/krishnaprasad34</a></p>
+            <p class="contact-value"><a href="https://www.linkedin.com/in/krishnaprasad34" target="_blank" rel="noopener noreferrer">linkedin.com/in/krishnaprasad34</a></p>
           </div>
         </div>
         <div class="contact-item">
@@ -228,12 +235,12 @@
       </div>
       <div>
         <div class="resume-box">
-          <div style="font-size:2.2rem;margin-bottom:.9rem;">📄</div>
+          <div style="font-size:2.2rem;margin-bottom:0.9rem;">📄</div>
           <h3>Download Resume</h3>
           <p>AWS Certified Data Engineer with 4+ years in Snowflake, EMR, Redshift, Kafka, Airflow, and BI platforms. M.S. Applied Statistics, Western Illinois University.</p>
           <a class="btn btn-primary" href="#" style="display:inline-block;margin:1rem 0;">Download PDF Resume</a>
           <br/>
-          <a class="btn btn-outline" href="https://www.linkedin.com/in/krishnaprasad34" target="_blank" style="display:inline-block;">View LinkedIn Profile</a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/krishnaprasad34" target="_blank" rel="noopener noreferrer" style="display:inline-block;">View LinkedIn Profile</a>
         </div>
       </div>
     </div>
@@ -244,84 +251,88 @@
   </footer>
 
   <script>
-    // Hero canvas background animation
-    const hC = document.getElementById('bg-canvas');
-    const hX = hC.getContext('2d');
-    let hW, hH, hP = [];
+    // Hero canvas background animation with error handling
+    try {
+      const hC = document.getElementById('bg-canvas');
+      const hX = hC.getContext('2d');
+      let hW, hH, hP = [];
 
-    function hR() {
-      hW = hC.width = window.innerWidth;
-      hH = hC.height = window.innerHeight;
-    }
-    hR();
-    window.addEventListener('resize', hR);
+      function hR() {
+        hW = hC.width = window.innerWidth;
+        hH = hC.height = window.innerHeight;
+      }
+      hR();
+      window.addEventListener('resize', hR);
 
-    for (let i = 0; i < 90; i++) {
-      hP.push({
-        x: Math.random() * 3000,
-        y: Math.random() * 1500,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        r: Math.random() * 1.6 + 0.4,
-        c: Math.random() > 0.55 ? 'rgba(201,168,76,' : 'rgba(0,201,167,'
-      });
-    }
-
-    let hMx = -9999, hMy = -9999;
-    document.addEventListener('mousemove', e => {
-      hMx = e.clientX;
-      hMy = e.clientY;
-    });
-
-    function hD() {
-      hX.clearRect(0, 0, hW, hH);
-      
-      for (let i = 0; i < hP.length; i++) {
-        for (let j = i + 1; j < hP.length; j++) {
-          const dx = hP[i].x - hP[j].x;
-          const dy = hP[i].y - hP[j].y;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          
-          if (d < 150) {
-            hX.beginPath();
-            hX.strokeStyle = 'rgba(201,168,76,' + (1 - d / 150) * 0.2 + ')';
-            hX.lineWidth = 0.5;
-            hX.moveTo(hP[i].x, hP[i].y);
-            hX.lineTo(hP[j].x, hP[j].y);
-            hX.stroke();
-          }
-        }
+      for (let i = 0; i < 90; i++) {
+        hP.push({
+          x: Math.random() * 3000,
+          y: Math.random() * 1500,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          r: Math.random() * 1.6 + 0.4,
+          c: Math.random() > 0.55 ? 'rgba(201,168,76,' : 'rgba(0,201,167,'
+        });
       }
 
-      hP.forEach(p => {
-        const dx = p.x - hMx;
-        const dy = p.y - hMy;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        
-        if (d < 90) {
-          p.vx += (dx / d) * 0.07;
-          p.vy += (dy / d) * 0.07;
-        }
-        
-        p.vx *= 0.998;
-        p.vy *= 0.998;
-        p.x += p.vx;
-        p.y += p.vy;
-        
-        if (p.x < 0) p.x = hW;
-        if (p.x > hW) p.x = 0;
-        if (p.y < 0) p.y = hH;
-        if (p.y > hH) p.y = 0;
-        
-        hX.beginPath();
-        hX.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        hX.fillStyle = p.c + (Math.random() * 0.3 + 0.1) + ')';
-        hX.fill();
+      let hMx = -9999, hMy = -9999;
+      document.addEventListener('mousemove', e => {
+        hMx = e.clientX;
+        hMy = e.clientY;
       });
-      
-      requestAnimationFrame(hD);
+
+      function hD() {
+        hX.clearRect(0, 0, hW, hH);
+        
+        for (let i = 0; i < hP.length; i++) {
+          for (let j = i + 1; j < hP.length; j++) {
+            const dx = hP[i].x - hP[j].x;
+            const dy = hP[i].y - hP[j].y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            
+            if (d < 150) {
+              hX.beginPath();
+              hX.strokeStyle = 'rgba(201,168,76,' + (1 - d / 150) * 0.2 + ')';
+              hX.lineWidth = 0.5;
+              hX.moveTo(hP[i].x, hP[i].y);
+              hX.lineTo(hP[j].x, hP[j].y);
+              hX.stroke();
+            }
+          }
+        }
+
+        hP.forEach(p => {
+          const dx = p.x - hMx;
+          const dy = p.y - hMy;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          
+          if (d < 90) {
+            p.vx += (dx / d) * 0.07;
+            p.vy += (dy / d) * 0.07;
+          }
+          
+          p.vx *= 0.998;
+          p.vy *= 0.998;
+          p.x += p.vx;
+          p.y += p.vy;
+          
+          if (p.x < 0) p.x = hW;
+          if (p.x > hW) p.x = 0;
+          if (p.y < 0) p.y = hH;
+          if (p.y > hH) p.y = 0;
+          
+          hX.beginPath();
+          hX.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          hX.fillStyle = p.c + (Math.random() * 0.3 + 0.1) + ')';
+          hX.fill();
+        });
+        
+        requestAnimationFrame(hD);
+      }
+      hD();
+    } catch (e) {
+      console.error('Canvas animation error:', e);
     }
-    hD();
 
     // Scroll navigation styling
     const nav = document.getElementById('nav');
