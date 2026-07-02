@@ -1,14 +1,29 @@
 {
   "name": "krishna-portfolio-copilot",
-  "version": "1.0.0",
-  "description": "Local backend stub for Copilot chat widget",
+  "version": "1.0.1",
+  "description": "Krishna Prasad Portfolio - Data Engineer & Cloud Architect",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5",
-    "openai": "^4.5.0"
-  }
+    "openai": "^4.24.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": [
+    "portfolio",
+    "data-engineer",
+    "aws",
+    "snowflake",
+    "spark",
+    "airflow"
+  ],
+  "author": "Krishna Prasad",
+  "license": "MIT"
 }
